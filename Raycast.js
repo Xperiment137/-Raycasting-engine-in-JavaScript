@@ -1,8 +1,6 @@
- var c = document.getElementById("myCanvas");
+  var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 var FOV = 0; // Angulo de la camara
-var anchoPantalla = window.innerWidth;
-var altoPantalla =  window.innerHeight;
 
 //Distancia de del rayo:
 var Ray_Dist = 0.01;
@@ -53,11 +51,19 @@ for(var i=0; i<mapa.length; i++) {
     } 
 }
 
-for(var i=0; i<mapa.length; i++) {
-    for(var j=0; j<mapa[i].length; j++) {
-       
+
+function Alto()
+{
+  return window.innerWidth;
+}  
+function Ancho()
+{
+  return window.innerHeight;
 }
-}
+c.width = Alto();
+c.height = Ancho();
+var anchoPantalla = c.width;
+var altoPantalla =  c.height;
 
 function radians(degrees)
 {
@@ -74,14 +80,15 @@ function draw()
 {
   
   delta = performance.now() - lastTime; ///estppppasd
-  ctx.beginPath();
+
+ctx.rect(0,0,anchoPantalla, altoPantalla);
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.beginPath();
 ctx.rect(0,altoPantalla/2,anchoPantalla, altoPantalla/2);
 ctx.fillStyle = "grey";
 ctx.fill();
 ctx.beginPath();
-ctx.rect(0,0,anchoPantalla, altoPantalla/2);
-ctx.fillStyle = "grey";
-ctx.fill();
  
   //Trazar un rayo desde cada una de las columnas de la pantalla:
   for(var x = 0; x < anchoPantalla; x++)
@@ -130,7 +137,7 @@ ctx.fill();
 ctx.beginPath();
 ctx.lineTo(x, nTecho);
 ctx.lineTo(x, nSuelo);
-ctx.strokeStyle = 'black';
+ctx.fillStyle = 'black';
 ctx.stroke();
      
  
@@ -149,6 +156,7 @@ ctx.strokeStyle = 'black';
 ctx.lineTo(x-1, nTecho_anterior);
 ctx.lineTo( x-1, nSuelo_anterior);
 ctx.strokeStyle = 'black';
+
         
       }
     }
@@ -160,8 +168,8 @@ ctx.strokeStyle = 'black';
      
     //Dibujar los bordes superiores e inferiores de la pared:
         ctx.beginPath();
+         ctx.lineTo(x,nTecho);
         ctx.lineTo(x,nTecho+2);
-        ctx.lineTo(x,nSuelo);
         ctx.strokeStyle = 'black';
         ctx.beginPath();
         ctx.lineTo(x, nSuelo);
