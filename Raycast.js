@@ -1,4 +1,4 @@
-  var c = document.getElementById("myCanvas");
+var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 var FOV = 0; // Angulo de la camara
 
@@ -137,7 +137,7 @@ ctx.beginPath();
 ctx.beginPath();
 ctx.lineTo(x, nTecho);
 ctx.lineTo(x, nSuelo);
-ctx.fillStyle = 'black';
+ctx.fillStyle = 'rgb('+ tonalidad+','+ tonalidad +','+ tonalidad +')';
 ctx.stroke();
      
  
@@ -149,13 +149,13 @@ ctx.stroke();
          ctx.beginPath();
 ctx.lineTo(x, nTecho);
 ctx.lineTo(x, nSuelo);
-ctx.strokeStyle = 'black';
+ctx.strokeStyle = 'rgb('+ tonalidad+','+ tonalidad +','+ tonalidad +')';
        }
       else{
           ctx.beginPath();
 ctx.lineTo(x-1, nTecho_anterior);
 ctx.lineTo( x-1, nSuelo_anterior);
-ctx.strokeStyle = 'black';
+ctx.strokeStyle = 'rgb('+ tonalidad+','+ tonalidad +','+ tonalidad +')';
 
         
       }
@@ -170,11 +170,11 @@ ctx.strokeStyle = 'black';
         ctx.beginPath();
          ctx.lineTo(x,nTecho);
         ctx.lineTo(x,nTecho+2);
-        ctx.strokeStyle = 'black';
+        ctx.strokeStyle = 'rgb('+ tonalidad+','+ tonalidad +','+ tonalidad +')';
         ctx.beginPath();
         ctx.lineTo(x, nSuelo);
         ctx.lineTo( x, nSuelo-2);
-        ctx.strokeStyle = 'black';
+        ctx.strokeStyle = 'rgb('+ tonalidad+','+ tonalidad +','+ tonalidad +')';
       
      
   }
