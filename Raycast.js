@@ -225,18 +225,18 @@ document.addEventListener("keydown", function(event) {
       yJugador += Math.sin(aJugador)*velocidad*delta;
     }
   }
-  else if(keyCode == 38) // camara mira arriba y abajo con las flechas del raton
+ else if(keyCode == 38) // camara mira arriba y abajo con las flechas del raton
   {
     if(mov > 1.0)
     {
-      mov = mov - 1.0;
+      mov = mov - Math.cos(aJugador)*velocidad*delta;
     }
   }
   else if(keyCode == 40)
   {
      if(mov < 10.0)
     {
-      mov = mov + 1.0;
+      mov = mov +  Math.cos(aJugador)*velocidad*delta;
     }
   
   }
