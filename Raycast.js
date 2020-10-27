@@ -112,7 +112,7 @@ ctx.beginPath();
       xRayo += xIncremento;
       yRayo += yIncremento;
        
-      //Si el rayo sale del mapa, o si colisiona con un muro, salimos del bucle while:
+      //Si el rayo sale del mapa, o si colisiona con un muro, salimos del bucle while :
       alert
       if( xRayo < 0 || xRayo >= MAPA_COLS || yRayo < 0 || yRayo >= MAPA_FILAS || mapa[Math.trunc(yRayo)][Math.trunc(xRayo)] != 0)
       {
