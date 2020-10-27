@@ -1,4 +1,4 @@
-var c = document.getElementById("myCanvas");
+ var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 var FOV = 0; // Angulo de la camara
 
@@ -16,7 +16,7 @@ var yJugador = 2.0; //Posicion Y
 var aJugador = 0.0; //Rotación (ángulo hacia dónde está apuntando)
 var velocidad = 0.006; //Velocidad de movimiento
 var giro = 0.006; //Velocidad de giro
- 
+var mov = 2.0;
  
 //Variables para calcular el delta time:
 var lastTime = 0;
@@ -128,8 +128,8 @@ ctx.beginPath();
     var altura = Math.min(altoPantalla, altoPantalla / distancia);
      
     //Calcular el píxel de la pantalla donde hay que empezar a dibujar el muro (nTecho) y donde hay que acabar (nSuelo)
-    var nTecho = Math.trunc(altoPantalla / 2.0 - altura/2);
-    var nSuelo = Math.trunc(altoPantalla / 2.0 + altura/2);
+    var nTecho = Math.trunc(altoPantalla / mov - altura/2);
+    var nSuelo = Math.trunc(altoPantalla / mov + altura/2);
      
     //Calcular una tonalidad para la columna, que dependerá de la distancia (cuanto más lejos, más oscuro)
     var tonalidad = map_range(Math.min(distancia, 7), 0, 7, 255, 40);
@@ -224,6 +224,21 @@ document.addEventListener("keydown", function(event) {
       xJugador += Math.cos(aJugador)*velocidad*delta;
       yJugador += Math.sin(aJugador)*velocidad*delta;
     }
+  }
+  else if(keyCode == 38) // camara mira arriba y abajo con las flechas del raton
+  {
+    if(mov > 1.0)
+    {
+      mov = mov - 1.0;
+    }
+  }
+  else if(keyCode == 40)
+  {
+     if(mov < 10.0)
+    {
+      mov = mov + 1.0;
+    }
+  
   }
 });
 
